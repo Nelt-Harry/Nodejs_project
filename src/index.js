@@ -3,11 +3,17 @@ const path = require('path')
 const exphbs  = require('express-handlebars');
 const morgan = require('morgan')
 const app = express()
-const port = 5000
+const port = 3000
+
+const route = require('./routes')
 
 app.use(express.static(path.join(__dirname,'public')))
+app.use(express.urlencoded({
+  extended: true,
+}))
+app.use(express.json())
 
-app.use(morgan('combined'))
+// app.use(morgan('combined'))
 
 app.engine('hbs', exphbs({
     extname: '.hbs'
@@ -15,10 +21,9 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'))
 
-app.get('/', function (req, res) {
-    res.render('home');
-});
+// route init
+route(app);
 
 app.listen(port, () => {
-  console.log(port)
+  console.log(`Example app listening at http://localhost:${port}`)
 })
