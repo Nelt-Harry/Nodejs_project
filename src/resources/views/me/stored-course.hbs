@@ -1,0 +1,25 @@
+<div class="mt-4 container">
+    <h3>Địa điểm đã qua</h3>
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên</th>
+                <th scope="col">Giá thành</th>
+                <th scope="col">Thời gian</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each courses}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.price}}</td>
+                <td>{{this.createdAt}}</td>
+                <td><button type="button" class="btn btn-link">Link</button></td>
+                <td><button type="button" class="btn btn-link">Link</button></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
